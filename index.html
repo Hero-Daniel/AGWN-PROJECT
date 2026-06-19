@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            keyframes: {
+              ticker: {
+                "0%, 45%": {
+                  transform: "translateY(0)",
+                },
+                "50%, 95%": {
+                  transform: "translateY(-50%)",
+                },
+                "100%": {
+                  transform: "translateY(0)",
+                },
+              },
+            },
+            animation: {
+              ticker: "ticker 6s ease-in-out infinite",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .font-bricolage {
+        font-family: "Bricolage Grotesque", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="relative flex items-center justify-between px-4 py-6 md:px-8">
+      <img
+        class="h-15"
+        src="images/agwn_logo-removebg-preview 2.png"
+        alt="agwn-logo"
+      />
+      <!-- nav bar -->
+      <nav class="hidden md:block absolute left-1/2 -translate-x-1/2">
+        <ul class="flex gap-12 text-xl font-semibold">
+          <li class="hover:text-[#078928] active-nav">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="hover:text-[#078928] active-nav">
+            <a href="#">About Us</a>
+          </li>
+          <li class="hover:text-[#078928] active-nav">
+            <a href="courses.html">Courses</a>
+          </li>
+          <li class="hover:text-[#078928] active-nav">
+            <a href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </nav>
+      <button
+        class="hidden md:block bg-[#078928] text-white px-4 py-2 rounded hover:bg-transparent hover:text-black border border-[#078928]"
+      >
+        Partner with Us
+      </button>
+
+      <!-- Mobile Nav -->
+      <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pb-4">
+      <ul class="flex flex-col gap-4 text-sm font-medium">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+          <button class="bg-[#078928] text-white px-4 py-2 rounded w-full">
+            Partner with Us
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <section class="bg-gray-100 flex justify-center">
+      <div
+        class="hidden-scroll slide-right w-full max-w-6xl px-4 sm:px-6 lg:px-0 py-12 sm:py-16 lg:py-20 text-center space-y-6"
+      >
+        <h1
+          class="font-bricolage font-semibold text-2xl sm:text-3xl lg:text-5xl leading-snug"
+        >
+          Your Degree is Just The Beginning of <br class="hidden sm:block" />
+          <span
+            class="text-[#078928] overflow-hidden inline-block align-bottom h-[1.2em] mt-2"
+          >
+            <span class="animate-ticker flex flex-col gap-2">
+              <span class="text-[#078928]">Impact</span>
+              <span class="text-[#078928]">Success</span>
+            </span>
+          </span>
+        </h1>
+        <p
+          class="text-[#656565] font-medium text-sm sm:text-base lg:text-xl mx-auto"
+        >
+          AGWN is your go-to platform for entrepreneurship, mentorship, and
+          financial education. We are turning Nigerian graduates from job
+          seekers into confident job creators.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2"
+        >
+          <button
+            id="sponsorBtn"
+            class="bg-[#078928] text-white font-semibold border border-[#078928] px-6 py-4 md:px-12 rounded-lg w-full sm:w-auto hover:bg-transparent hover:text-black hover:border transition"
+          >
+            Sponsor a Student →
+          </button>
+          <!-- sponsor modal -->
+          <div
+            class="modal fixed inset-0 items-center justify-center hidden z-50 p-4 bg-black/60 backdrop-blur-sm"
+            id="sponsorModal"
+          >
+            <div class="relative bg-white rounded-2xl p-10 w-200">
+              <span
+                class="closeBtn absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-3xl font-bold cursor-pointer"
+                >&times;</span
+              >
+
+              <h2 class="text-2xl font-bold mb-4">Sponsor a Student</h2>
+              <p class="text-gray-600 mb-6">
+                Thank you for your interest in sponsoring a student! Please fill
+                out the form below or contact us directly.
+              </p>
+
+              <form id="sponsorForm" class="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#078928]"
+                />
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#078928]"
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#078928]"
+                />
+                <textarea
+                  placeholder="Any specific questions?"
+                  rows="3"
+                  class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#078928]"
+                ></textarea>
+
+                <button
+                  type="submit"
+                  class="w-full bg-[#078928] text-white py-3 rounded-lg hover:bg-transparent hover:text-black border hover:border-[#078928] transition"
+                >
+                  Submit Interest
+                </button>
+              </form>
+
+              <p class="text-sm text-gray-500 mt-4 text-center">
+                Or contact us directly:
+                <a href="mailto:sponsor@example.com" class="text-[#078928]"
+                  >sponsor@example.com</a
+                >
+              </p>
+            </div>
+          </div>
+          <!-- End of sponsor modal -->
+          <button
+            id="enrollBtn"
+            class="bg-transparent text-black font-semibold border border-dashed border-[#078928] px-6 py-4 md:px-12 rounded-lg w-full sm:w-auto hover:bg-[#078928] hover:text-white transition"
+          >
+            Enroll Now →
+          </button>
+          <!-- Enroll Modal -->
+          <div
+            class="modal fixed inset-0 items-center justify-center hidden z-50 p-4 bg-black/60 backdrop-blur-sm"
+            id="enrollModal"
+          >
+            <div class="relative bg-white rounded-2xl p-10 w-full max-w-2xl">
+              <span
+                class="closeBtn absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-3xl font-bold cursor-pointer"
+              >
+                &times;
+              </span>
+
+              <h2 class="text-2xl font-bold mb-4">Enroll Now →</h2>
+
+              <p class="text-gray-600 mb-6">
+                Complete the form below to begin your enrollment process.
+              </p>
+
+              <form id="enrollForm" class="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#078928]"
+                />
+
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#078928]"
+                />
+
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#078928]"
+                />
+
+                <select
+                  class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#078928]"
+                >
+                  <option selected disabled>Select Course</option>
+                  <option>Frontend Development</option>
+                  <option>Backend Development</option>
+                  <option>UI/UX Design</option>
+                  <option>Data Analysis</option>
+                </select>
+
+                <textarea
+                  rows="4"
+                  placeholder="Tell us a little about yourself"
+                  class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-[#078928]"
+                ></textarea>
+
+                <button
+                  type="submit"
+                  class="w-full bg-[#078928] text-white py-3 rounded-lg hover:bg-transparent hover:text-black border hover:border-[#078928] transition"
+                >
+                  Submit Enrollment
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Images -->
+        <div
+          class="hidden-scroll slide-up flex flex-wrap justify-center gap-6 sm:gap-10 lg:gap-32 pt-6"
+        >
+          <img
+            src="images/Frame 2147228690.png"
+            class="w-24 sm:w-32 lg:w-72"
+            alt=""
+          />
+          <img
+            src="images/Frame 2147228690 (1).png"
+            class="w-24 sm:w-32 lg:w-72"
+            alt=""
+          />
+          <img
+            src="images/Frame 2147228690 (2).png"
+            class="w-24 sm:w-32 lg:w-72"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-10 sm:py-14 lg:py-20">
+      <div
+        class="flex flex-wrap justify-center items-center gap-6 sm:gap-10 lg:gap-32 px-4"
+      >
+        <img
+          src="images/Vector.png"
+          alt="Sponsor 1"
+          class="w-20 sm:w-28 lg:w-32 h-auto object-contain"
+        />
+        <img
+          src="images/huawei 1.png"
+          alt="Sponsor 2"
+          class="w-20 sm:w-28 lg:w-32 h-auto object-contain"
+        />
+        <img
+          src="images/9mobile logo.png"
+          alt="Sponsor 3"
+          class="w-20 sm:w-28 lg:w-32 h-auto object-contain"
+        />
+        <img
+          src="images/barclays-32482 1.png"
+          alt="Sponsor 4"
+          class="w-20 sm:w-28 lg:w-32 h-auto object-contain"
+        />
+      </div>
+    </section>
+
+    <section class="bg-gray-100 py-16 px-6 md:px-10">
+      <div
+        class="flex flex-col md:flex-row md:gap-10 justify-center md:justify-between relative"
+      >
+        <div
+          class="hidden-scroll slide-left flex flex-col gap-6 md:gap-0 md:flex-1 border border-black-100 relative pl-0 md:pl-28 items-center md:items-start"
+        >
+          <img
+            src="/images/Ellipse 5.png"
+            alt=""
+            class="absolute top-10 left-1/2"
+          />
+          <div
+            class="bg-[#FCE8E6] p-6 w-full max-w-md md:w-72 md:-rotate-6 rounded-xl flex flex-col items-center gap-3 shadow-md z-10"
+          >
+            <h3 class="font-semibold text-lg">Our Vision</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">
+              To see more job creators than job seekers among young Nigerian
+              graduates, drastically reducing unemployment and inspiring a
+              generation that takes the lead.
+            </p>
+          </div>
+          <img
+            src="/images/Ellipse 6.png"
+            alt=""
+            class="absolute top-60 left-32"
+          />
+          <div
+            class="bg-[#FFF5D4] p-6 w-full max-w-md md:w-72 rounded-xl flex flex-col items-center gap-3 shadow-lg md:-mt-4 md:ml-36 z-30"
+          >
+            <h3 class="font-semibold text-lg">Our Mission</h3>
+            <p class="text-sm text-gray-700 leading-relaxed">
+              To equip young Nigerian minds with entrepreneurial skills,
+              innovative thinking, leadership, financial education, and
+              mentorship, preparing graduates to be confident and impactful.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div
+          class="hidden-scroll slide-right flex flex-col md:flex-1 text-center md:text-left mt-10 md:mt-0"
+        >
+          <p class="text-[#078928] font-medium mb-2">Learn • Grow • Lead</p>
+          <h2 class="text-2xl font-semibold mb-4">AGWN Methodology:</h2>
+          <ul class="list-disc list-inside space-y-3 mb-4">
+            <li>
+              Skills Development: programs, workshops, and Hackathons to enhance
+              graduates' skills.
+            </li>
+            <li>
+              Networking & Mentorship: Pairing graduates with experienced
+              professionals for guidance and support.
+            </li>
+            <li>
+              Entrepreneurship Support: Providing resources, financial
+              education, funding, and incubation for aspiring entrepreneurs.
+            </li>
+          </ul>
+          <p>Nigerian graduates deserve more than just a degree.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Approach -->
+    <section class="hidden-scroll slide-up p-12">
+      <h2 class="font-bold text-[#078928] text-2xl mb-8">Our Approach</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="border border-gray-100 p-5 rounded-lg">
+          <img src="/images/file.png" alt="" class="mb-4" />
+          <h3 class="font-bold text-2xl mb-3">Financial Education</h3>
+          <p class="text-[#909090]">
+            Our program trains participants to build, manage, and grow finances,
+            equipping them to make informed financial decisions and write
+            winning business plans.
+          </p>
+        </div>
+
+        <div class="border border-gray-100 p-5 rounded-lg">
+          <img src="/images/box.png" alt="" class="mb-4" />
+          <h3 class="font-bold text-2xl mb-3">Learning by Doing</h3>
+          <p class="text-[#909090]">
+            Our program trains participants to build, manage, and grow finances,
+            equipping them to make informed financial decisions and write
+            winning business plans.
+          </p>
+        </div>
+
+        <div class="border border-gray-100 p-5 rounded-lg">
+          <img src="/images/handshake.png" alt="" class="mb-4" />
+          <h3 class="font-bold text-2xl mb-3">Mentorship & Coaching</h3>
+          <p class="text-[#909090]">
+            Our program trains participants to build, manage, and grow finances,
+            equipping them to make informed financial decisions and write
+            winning business plans.
+          </p>
+        </div>
+
+        <div class="border border-gray-100 p-5 rounded-lg">
+          <img src="/images/world.png" alt="" class="mb-4" />
+          <h3 class="font-bold text-2xl mb-3">Networking & Collaboration</h3>
+          <p class="text-[#909090]">
+            Our program trains participants to build, manage, and grow finances,
+            equipping them to make informed financial decisions and write
+            winning business plans.
+          </p>
+        </div>
+
+        <div class="border border-gray-100 p-5 rounded-lg">
+          <img src="/images/batch.png" alt="" class="mb-4" />
+          <h3 class="font-bold text-2xl mb-3">Certification</h3>
+          <p class="text-[#909090]">
+            Our program trains participants to build, manage, and grow finances,
+            equipping them to make informed financial decisions and write
+            winning business plans.
+          </p>
+        </div>
+
+        <div class="border border-gray-100 p-5 rounded-lg">
+          <img src="/images/cube.png" alt="" class="mb-4" />
+          <h3 class="font-bold text-2xl mb-3">Access to Resources</h3>
+          <p class="text-[#909090]">
+            Our program trains participants to build, manage, and grow finances,
+            equipping them to make informed financial decisions and write
+            winning business plans.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 py-12 lg:px-12">
+      <div
+        class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10"
+      >
+        <h2 class="font-bold text-[#078928] text-3xl leading-tight">
+          Courses to Turn Your
+          <span class="block">Passion into Income</span>
+        </h2>
+
+        <a
+          href="courses.html"
+          class="inline-flex items-center justify-center bg-[#078928] text-white px-6 py-3 rounded-md border border-[#078928] transition duration-300 hover:bg-transparent hover:text-[#078928]"
+        >
+          View All Courses
+        </a>
+      </div>
+
+      <!-- Courses -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition"
+        >
+          <img
+            src="images/coding.png"
+            alt="Coding and Web Design"
+            class="w-full h-62 object-cover"
+          />
+
+          <div class="p-6">
+            <h3 class="font-bold text-2xl mb-3">Coding & Web Design</h3>
+
+            <p class="text-gray-600 mb-5">
+              Learn to build websites and apps from scratch with real-world
+              projects.
+            </p>
+
+            <button
+              class="bg-[#078928] w-full text-white px-5 py-3 rounded-md border border-black-100 hover:bg-transparent hover:text-[#078928]"
+            >
+              Enroll Now →
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition"
+        >
+          <img
+            src="images/fashion.png"
+            alt="Coding and Web Design"
+            class="w-full h-62 object-cover"
+          />
+
+          <div class="p-6">
+            <h3 class="font-bold text-2xl mb-3">Fashion Design</h3>
+
+            <p class="text-gray-600 mb-5">
+              Learn to build websites and apps from scratch with real-world
+              projects.
+            </p>
+
+            <button
+              class="bg-[#078928] w-full text-white px-5 py-3 rounded-md border border-black-100 hover:bg-transparent hover:text-[#078928]"
+            >
+              Enroll Now →
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition"
+        >
+          <img
+            src="images/photograph.png"
+            alt="Coding and Web Design"
+            class="w-full h-62 object-cover"
+          />
+
+          <div class="p-6">
+            <h3 class="font-bold text-2xl mb-3">Photography</h3>
+
+            <p class="text-gray-600 mb-5">
+              Learn to build websites and apps from scratch with real-world
+              projects.
+            </p>
+
+            <button
+              class="bg-[#078928] w-full text-white px-5 py-3 rounded-md border border-black-100 hover:bg-transparent hover:text-[#078928]"
+            >
+              Enroll Now →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center px-6 py-8 md:px-12 md:py-20"
+    >
+      <div>
+        <h2 class="font-bold text-2xl md:text-4xl text-[#078928]">100+</h2>
+        <p class="font-bold text-base md:text-xl">Empowerment</p>
+      </div>
+
+      <div>
+        <h2 class="font-bold text-2xl md:text-4xl text-[#078928]">4 Months</h2>
+        <p class="font-bold text-base md:text-xl">Mentorship</p>
+      </div>
+
+      <div>
+        <h2 class="font-bold text-2xl md:text-4xl text-[#078928]">8+ Skills</h2>
+        <p class="font-bold text-base md:text-xl">Available</p>
+      </div>
+
+      <div>
+        <h2 class="font-bold text-2xl md:text-4xl text-[#078928]">3 States</h2>
+        <p class="font-bold text-base md:text-xl">Reached</p>
+      </div>
+    </section>
+    <section class="mx-6 md:mx-12 bg-gray-100 p-10 rounded-lg">
+      <div
+        class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+      >
+        <div class="md:w-2/4">
+          <h2 class="font-bold text-2xl mb-4">
+            Empower a Graduate by Sponsoring <br />
+            their AGWN Training
+          </h2>
+          <p class="text-gray-700 mb-6">
+            Help a young Nigerian graduate kickstart their journey into
+            entrepreneurship and skill acquisition. By sponsoring a student, you
+            are not just giving money — you are changing a life and building a
+            nation.
+          </p>
+          <button
+            class="bg-[#078928] text-white px-6 py-3 rounded-md hover:bg-green-700 transition"
+          >
+            Sponsor a Student →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="flex flex-col md:flex-row md:px-12 px-6 py-12 gap-10 items-stretch"
+    >
+      <!-- Left Column -->
+      <div class="md:w-1/2 flex flex-col justify-start">
+        <!-- Content Wrapper -->
+        <div class="flex flex-col gap-4 mb-5">
+          <h2 class="font-bold text-2xl md:text-3xl text-[#078928]">
+            What Unique Advantages does AGWN Give you?
+          </h2>
+          <p class="text-base md:text-lg text-gray-700">
+            From hands-on training to mentorship and certification, here is
+            everything you gain when you join AGWN.
+          </p>
+
+          <div class="flex flex-col gap-8">
+            <div class="flex flex-row gap-8 items-start">
+              <img
+                src="images/Frame 2147228751.png"
+                alt=""
+                class="w-12 h-12 flex-shrink-0"
+              />
+              <div>
+                <h3 class="text-lg md:text-xl font-medium mb-3">
+                  Hands-on real world training:
+                </h3>
+                <p class="text-sm md:text-xl text-[#656565]">
+                  Gain practical skills through real-world projects under close
+                  expert supervision, building confidence and competence from
+                  day one.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-row gap-8 items-start">
+              <img
+                src="images/Frame 2147228751.png"
+                alt=""
+                class="w-12 h-12 flex-shrink-0"
+              />
+              <div>
+                <h3 class="text-lg md:text-xl font-medium mb-3">Mentorship:</h3>
+                <p class="text-sm md:text-xl text-[#656565]">
+                  Learn directly from experts in the field, with guidance to
+                  accelerate your learning and career growth.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-row gap-8 items-start">
+              <img
+                src="images/Frame 2147228751.png"
+                alt=""
+                class="w-12 h-12 flex-shrink-0"
+              />
+              <div>
+                <h3 class="text-lg md:text-xl font-medium mb-3">
+                  Certification:
+                </h3>
+                <p class="text-sm md:text-xl text-[#656565]">
+                  Receive recognized certification after completion, boosting
+                  your resume and career opportunities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="self-start mt-3 bg-[#078928] text-white px-5 py-2 rounded-lg hover:bg-transparent hover:text-black border border-[#078928] transition"
+        >
+          Training is ongoing
+        </button>
+      </div>
+
+      <!-- Right Column: Image -->
+      <div class="md:w-1/2 flex justify-end">
+        <img
+          src="images/happy-boi.png"
+          alt=""
+          class="w-full max-w-3xl object-contain"
+        />
+      </div>
+    </section>
+
+    <section class="p-16">
+      <h2 class="font-bold text-2xl text-[#078928] mb-2">Testimonials</h2>
+
+      <h3 class="font-bold text-2xl mb-8">
+        Discover our students and community stories
+      </h3>
+
+      <div class="swiper py-6 overflow-hidden">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div
+              class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm h-full"
+            >
+              <img src="images/“.png" alt="" class="w-8 mb-4" />
+
+              <p class="leading-relaxed text-xl">
+                "I had no skill and no direction after graduation. After AGWN's
+                catering program, I left with a business and a future I built
+                with my own hands. I honestly don't know what I would have done
+                without AGWN."
+              </p>
+
+              <div class="flex items-center gap-4 mt-6">
+                <img
+                  src="images/Ellipse 221.png"
+                  alt=""
+                  class="w-12 h-12 rounded-full object-cover"
+                />
+
+                <div>
+                  <p class="font-semibold">Amina Yusuf</p>
+                  <p class="text-sm text-gray-500">Kaduna</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm h-full"
+            >
+              <img src="images/“.png" alt="" class="w-8 mb-4" />
+
+              <p class="text-gray-600 leading-relaxed text-xl">
+                "I had no skill and no direction after graduation. After AGWN's
+                catering program, I left with a business and a future I built
+                with my own hands. I honestly don't know what I would have done
+                without AGWN."
+              </p>
+
+              <div class="flex items-center gap-4 mt-6">
+                <img
+                  src="images/Ellipse 221.png"
+                  alt=""
+                  class="w-12 h-12 rounded-full object-cover"
+                />
+
+                <div>
+                  <p class="font-semibold">Amina Yusuf</p>
+                  <p class="text-sm text-gray-500">Kaduna</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div
+              class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm h-full"
+            >
+              <img src="images/“.png" alt="" class="w-8 mb-4" />
+
+              <p class="text-gray-600 leading-relaxed text-xl">
+                "I had no skill and no direction after graduation. After AGWN's
+                catering program, I left with a business and a future I built
+                with my own hands. I honestly don't know what I would have done
+                without AGWN."
+              </p>
+
+              <div class="flex items-center gap-4 mt-6">
+                <img
+                  src="images/Ellipse 221.png"
+                  alt=""
+                  class="w-12 h-12 rounded-full object-cover"
+                />
+
+                <div>
+                  <p class="font-semibold">Amina Yusuf</p>
+                  <p class="text-sm text-gray-500">Kaduna</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div
+              class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm h-full"
+            >
+              <img src="images/“.png" alt="" class="w-8 mb-4" />
+
+              <p class="text-gray-600 leading-relaxed text-xl">
+                "I had no skill and no direction after graduation. After AGWN's
+                catering program, I left with a business and a future I built
+                with my own hands. I honestly don't know what I would have done
+                without AGWN."
+              </p>
+
+              <div class="flex items-center gap-4 mt-6">
+                <img
+                  src="images/Ellipse 221.png"
+                  alt=""
+                  class="w-12 h-12 rounded-full object-cover"
+                />
+
+                <div>
+                  <p class="font-semibold">Amina Yusuf</p>
+                  <p class="text-sm text-gray-500">Kaduna</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div
+              class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm h-full"
+            >
+              <img src="images/“.png" alt="" class="w-8 mb-4" />
+
+              <p class="text-gray-600 leading-relaxed text-xl">
+                "I had no skill and no direction after graduation. After AGWN's
+                catering program, I left with a business and a future I built
+                with my own hands. I honestly don't know what I would have done
+                without AGWN."
+              </p>
+
+              <div class="flex items-center gap-4 mt-6">
+                <img
+                  src="images/Ellipse 221.png"
+                  alt=""
+                  class="w-12 h-12 rounded-full object-cover"
+                />
+
+                <div>
+                  <p class="font-semibold">Amina Yusuf</p>
+                  <p class="text-sm text-gray-500">Kaduna</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination block md:hidden mt-4"></div>
+      </div>
+    </section>
+
+    <!-- <section>
+      <div class="bg-gray-100 mx-6 md:mx-12 rounded-xl items-center text-center p-10 mb-10">
+        <h2 class="font-bold text-2xl mb-3">Join Our Newsletter</h2>
+        <p class="text-base md:text-xl text-gray-500 mb-6">
+          Stay connected and informed: Join our newsletter for the latest
+          updates,<br> inspiration, and design insights
+        </p>
+
+        <div class="flex justify-center">
+          <div class="flex items-center w-full max-w-xl bg-white border border-gray-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-[#078928]">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="flex-1 px-4 py-2 outline-none bg-transparent"
+            />
+            <button class="hidden w-full md:w-auto bg-[#078928] text-white text-sm px-4 py-2 m-1 md:w-auto hover:bg-green-800 transition whitespace-nowrap rounded-xl ">
+              Sign me up
+            </button>
+          </div>
+           mobile view button -->
+    <!-- <button class="w-full md:w-auto bg-[#078928] text-white text-sm px-4 py-2 m-1 hover:bg-green-800 transition whitespace-nowrap rounded-xl ">
+            Sign me up
+          </button>
+        </div>
+      </div> -->
+    <!-- </section> -->
+
+    <section class="mb-12">
+      <div
+        class="bg-gray-100 mx-6 md:mx-44 rounded-xl items-center text-center p-10"
+      >
+        <h2 class="font-bold text-3xl mb-3 p-5">Join Our Newsletter</h2>
+        <p class="text-base md:text-2xl text-gray-500 mb-6 pb-4">
+          Stay connected and informed: Join our newsletter for the latest <br />
+          updates, inspiration, and design insights
+        </p>
+
+        <div class="flex flex-col items-center gap-3">
+          <div
+            class="flex items-center w-full md:max-w-3xl bg-white rounded-lg md:rounded-full overflow-hidden border border-[#078928]"
+          >
+            <input
+              type="email"
+              placeholder="Email"
+              class="flex-1 px-4 py-4 md:py-8 outline-none bg-transparent text-[#078928]"
+            />
+            <!-- Button inside input — hidden on mobile -->
+            <button
+              class="hidden md:block bg-[#078928] text-white text-sm px-14 py-7 mx-1 rounded-full hover:bg-transparent hover:text-[#078928] hover:border border-[#078928] transition whitespace-nowrap"
+            >
+              Sign me up
+            </button>
+          </div>
+
+          <!-- Button below input — visible on mobile only -->
+          <button
+            class="md:hidden w-full max-w-sm bg-[#078928] text-white text-sm px-4 py-4 rounded-lg hover:bg-green-800 transition"
+          >
+            Sign me up
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-black text-white px-8 md:px-16 py-12 rounded-t-3xl">
+      <div class="flex flex-col md:flex-row gap-10 md:gap-16">
+        <!-- Brand Column -->
+        <div class="flex flex-col gap-4 md:max-w-xs">
+          <h2 class="font-bold text-4xl">AGWN</h2>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            The AI-Powered Tool Built to Simplify Your Writing Journey. Start
+            Writing Better Today.
+          </p>
+          <button
+            class="self-start border border-white text-white text-sm px-5 py-2 rounded-lg hover:bg-white hover:text-black transition"
+          >
+            Donate Now
+          </button>
+          <p class="text-gray-500 text-xs mt-auto pt-4">
+            © 2026 AGWN Inc. All rights reserved.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="flex flex-row gap-10 md:gap-16 md:ml-auto">
+          <div class="flex flex-col gap-3">
+            <h4 class="font-bold text-base text-white mb-1">Product</h4>
+            <ul class="flex flex-col gap-2 text-gray-400 text-sm">
+              <li class="hover:text-white cursor-pointer transition">
+                Features
+              </li>
+              <li class="hover:text-white cursor-pointer transition">
+                Pricing
+              </li>
+              <li class="hover:text-white cursor-pointer transition">
+                Integrations
+              </li>
+            </ul>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <h4 class="font-bold text-base text-white mb-1">Company</h4>
+            <ul class="flex flex-col gap-2 text-gray-400 text-sm">
+              <li class="hover:text-white cursor-pointer transition">Blog</li>
+              <li class="hover:text-white cursor-pointer transition">Help</li>
+              <li class="hover:text-white cursor-pointer transition">FAQs</li>
+            </ul>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <h4 class="font-bold text-base text-white mb-1">Social</h4>
+            <ul class="flex flex-col gap-2 text-gray-400 text-sm">
+              <li class="hover:text-white cursor-pointer transition">
+                Twitter
+              </li>
+              <li class="hover:text-white cursor-pointer transition">
+                LinkedIn
+              </li>
+              <li class="hover:text-white cursor-pointer transition">
+                Facebook
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>

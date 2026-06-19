@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swiper-wrapper {
+    transition-timing-function: linear !important;
+  }
+
+  .hidden-scroll {
+    opacity: 0;
+    transition: all 0.9s ease;
+  }
+  .slide-left {
+    transform: translateX(-150px);
+  }
+
+  .slide-right {
+    transform: translateX(150px);
+  }
+
+  .slide-up {
+    transform: translateY(100px);
+  }
+
+  .show {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  /* for contact page */
+  summary::after {
+    content: "⌄";
+    font-size: 26px;
+    transition: transform 0.3s ease;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  details[open] summary::after {
+    transform: rotate(180deg);
+  }

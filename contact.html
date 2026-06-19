@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            keyframes: {
+              ticker: {
+                "0%, 45%": {
+                  transform: "translateY(0)",
+                },
+                "50%, 95%": {
+                  transform: "translateY(-50%)",
+                },
+                "100%": {
+                  transform: "translateY(0)",
+                },
+              },
+            },
+            animation: {
+              ticker: "ticker 6s ease-in-out infinite",
+            },
+          },
+        },
+      };
+    </script> -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .font-bricolage {
+        font-family: "Bricolage Grotesque", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="relative flex items-center justify-between px-4 py-6 md:px-8">
+      <img
+        class="h-15"
+        src="images/agwn_logo-removebg-preview 2.png"
+        alt="agwn-logo"
+      />
+      <!-- nav bar -->
+      <nav class="hidden md:block absolute left-1/2 -translate-x-1/2">
+        <ul class="flex gap-12 text-xl font-semibold">
+          <li class="hover:text-[#078928] active-nav">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="hover:text-[#078928] active-nav">
+            <a href="#">About Us</a>
+          </li>
+          <li class="hover:text-[#078928] active-nav">
+            <a href="courses.html">Courses</a>
+          </li>
+          <li class="hover:text-[#078928] active-nav">
+            <a href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </nav>
+      <button
+        class="hidden md:block bg-[#078928] text-white px-4 py-2 rounded hover:bg-transparent hover:text-black border border-[#078928]"
+      >
+        Partner with Us
+      </button>
+
+      <!-- Mobile Nav -->
+      <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pb-4">
+      <ul class="flex flex-col gap-4 text-sm font-medium">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+          <button class="bg-[#078928] text-white px-4 py-2 rounded w-full">
+            Partner with Us
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <section
+      class="h-screen w-full bg-[url('/images/contact-bg.png')] bg-cover bg-center bg-no-repeat"
+    ></section>
+
+    <section class="px-6 md:px-12 py-10">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="font-bricolage font-bold text-xl md:text-2xl space-y-2">
+          Why Would You Like To Contact Us
+        </h2>
+        <p class="text-sm md:text-base text-gray-600">
+          Which of the following best fits your needs? We're all ears and ready
+          to assist. Share your queries, ideas, or just drop a hello. Let's
+          connect!
+        </p>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-6 mb-6">
+        <div class="md:w-1/2">
+          <img
+            src="images/celebration.png"
+            alt=""
+            class="w-full h-full object-cover rounded-xl"
+          />
+        </div>
+
+        <div class="md:w-1/2 bg-[#F0AF77] rounded-xl p-10 flex flex-col gap-3">
+          <h3 class="text-[#078928] font-semibold font-bricolage">
+            CERTIFICATION
+          </h3>
+          <h2 class="font-bold font-bricolage text-xl md:text-2xl max-w-xl">
+            Do you need Assistance getting your AGWN Certificate?
+          </h2>
+          <p class="text-sm md:text-lg max-w-2xl text-gray-700">
+            Have you completed an AGWN skill program and need your certificate?
+            Get in touch with us and we will sort you out.
+          </p>
+          <a href="#" class="text-[#078928] font-medium">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-6 mb-6">
+        <div class="md:w-1/2">
+          <img
+            src="images/celebration.png"
+            alt=""
+            class="w-full h-full object-cover rounded-xl"
+          />
+        </div>
+
+        <div class="md:w-1/2 bg-[#C1E0E5] rounded-xl p-10 flex flex-col gap-3">
+          <h3 class="text-[#078928] font-semibold font-bricolage">INQUIRY</h3>
+          <h2 class="font-bold font-bricolage text-xl md:text-2xl max-w-xl">
+            Have a question? Or just want to connect?
+          </h2>
+          <p class="text-sm md:text-lg max-w-2xl text-gray-700">
+            Whether you have a burning question or simply want to connect, we're
+            here to help. Feel free to reach out and we'll be happy to assist
+            you!
+          </p>
+          <a href="#" class="text-[#078928] font-medium">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-6 mb-6">
+        <div class="md:w-1/2">
+          <img
+            src="images/Happi.png"
+            alt=""
+            class="w-full h-full object-cover rounded-xl"
+          />
+        </div>
+
+        <div class="md:w-1/2 bg-[#CEC9CF] rounded-xl p-10 flex flex-col gap-3">
+          <h3 class="text-[#078928] font-semibold font-bricolage">
+            WE ARE HIRING
+          </h3>
+          <h2 class="font-bold font-bricolage text-xl md:text-2xl max-w-xl">
+            Are you skilled and passionate about empowering Nigerian graduates?
+          </h2>
+          <p class="text-sm md:text-lg max-w-2xl text-gray-700">
+            We are looking for passionate facilitators and professionals to join
+            the AGWN team. If you have a skill and a heart for impact, we want
+            you!
+          </p>
+          <a href="#" class="text-[#078928] font-medium">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-6 mb-6">
+        <div class="md:w-1/2">
+          <img
+            src="images/thumbsUp.png"
+            alt=""
+            class="w-full h-full object-cover rounded-xl"
+          />
+        </div>
+
+        <div class="md:w-1/2 bg-[#FFD2CF] rounded-xl p-10 flex flex-col gap-3">
+          <h3 class="text-[#078928] font-semibold font-bricolage">INQUIRY</h3>
+          <h2 class="font-bold font-bricolage text-xl md:text-2xl max-w-xl">
+            Ready to learn a skill and build your future?
+          </h2>
+          <p class="text-sm md:text-lg max-w-2xl text-gray-700">
+            Join our next cohort and acquire practical skills, mentorship, and
+            financial education to become a job creator today.
+          </p>
+          <a href="#" class="text-[#078928] font-medium">Get in Touch →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section>
+      <div class="text-center space-y-3 font-bricolage ">
+        <h2 class="font-bold text-2xl">Frequently Asked Question</h2>
+        <p class="text-sm md:text-xl max-w-lg mx-auto font-semibold ">Still have questions that aren't covered? Contact us today and get the answers you need.</p>
+      </div>
+
+      <div class="p-10 space-y-6">
+        <details class="bg-gray-100 p-4 rounded-xl">
+          <summary class="list-style-none display-none flex justify-between items-center cursor-pointer font-semibold text-xm">Who CAn Apply For AGWN Program <span class="">⌄</span></summary>
+          <p class="py-3">Anybody can apply</p>
+        </details>
+
+        <details class="bg-gray-100 p-4 rounded-xl">
+          <summary class="list-style-none display-none flex justify-between items-center cursor-pointer font-semibold text-xm">Who CAn Apply For AGWN Program <span class="">⌄</span></summary>
+          <p class="py-3">Anybody can apply</p>
+        </details>
+
+        <details class="bg-gray-100 p-4 rounded-xl">
+          <summary class="list-style-none display-none flex justify-between items-center cursor-pointer font-semibold text-xm">Who CAn Apply For AGWN Program <span class="">⌄</span></summary>
+          <p class="py-3">Anybody can apply</p>
+        </details>
+      </div>
+      
+    </section> -->
+    <section class="px-4 md:px-10 py-10">
+      <div class="text-center font-bricolage space-y-3">
+        <h2 class="font-bold text-2xl md:text-3xl">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-sm md:text-lg max-w-lg mx-auto font-semibold">
+          Still have questions that aren't covered? Contact us today and get the
+          answers you need.
+        </p>
+      </div>
+
+      <div class="p-10 space-y-6">
+        <details class="bg-gray-100 p-4 rounded-xl">
+          <summary
+            class="flex justify-between items-center cursor-pointer font-semibold text-sm md:text-base list-none"
+          >
+            Who Can Apply For AGWN Program
+          </summary>
+          <p class="py-3 text-sm md:text-base">Anybody can apply</p>
+        </details>
+
+        <details class="bg-gray-100 p-4 rounded-xl">
+          <summary
+            class="flex justify-between items-center cursor-pointer font-semibold text-sm md:text-base list-none"
+          >
+            Who Can Apply For AGWN Program
+          </summary>
+          <p class="py-3 text-sm md:text-base">Anybody can apply</p>
+        </details>
+
+        <details class="bg-gray-100 p-4 rounded-xl">
+          <summary
+            class="flex justify-between items-center cursor-pointer font-semibold text-sm md:text-base list-none"
+          >
+            Who Can Apply For AGWN Program
+          </summary>
+          <p class="py-3 text-sm md:text-base">Anybody can apply</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="bg-gray-100 m-12 p-10 rounded-xl">
+      <h2 class="font-bold text-2xl">
+        Empower a Graduate by Sponsoring their AGWN Training
+      </h2>
+      <p>
+        Help a young Nigerian graduate kickstart their journey into
+        entrepreneurship and skill acquisition. By sponsoring a student, you are
+        not just giving money — you are changing a life and building a nation.
+      </p>
+
+      <button
+        id="sponsorBtn"
+        class="bg-[#078928] text-white font-semibold border border-[#078928] px-6 py-4 md:px-12 rounded-lg w-full sm:w-auto hover:bg-transparent hover:text-black hover:border transition"
+      >
+        Sponsor a Student →
+      </button>
+    </section>
+  </body>
+</html>

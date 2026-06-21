@@ -55,21 +55,17 @@ modal.forEach((modalElement) => {
 
 const swiper = new Swiper(".swiper", {
   loop: true,
+  speed: 600,
 
   slidesPerView: 1,
   spaceBetween: 20,
 
-  freeMode: {
-    enabled: true,
-    momentum: false,
-  },
-
-  speed: 15000, // lower = faster feel (tweak this)
+  pauseOnMouseEnter: true,
 
   autoplay: {
-    delay: 0,
+    delay: 3000,
     disableOnInteraction: false,
-    pauseOnMouseEnter: false,
+    pauseOnMouseEnter: true,
   },
 
   pagination: {
@@ -78,15 +74,26 @@ const swiper = new Swiper(".swiper", {
   },
 
   breakpoints: {
+    640: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    },
     768: {
-      slidesPerView: 2.2,
+      slidesPerView: 1,
       spaceBetween: 24,
     },
-
     1024: {
-      slidesPerView: 2.8,
+      slidesPerView: 2.5,
       spaceBetween: 30,
+      speed: 7000,
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+      },
+      freeMode: {
+        enabled: true,
+        momentum: false,
+      },
     },
   },
 });
-

@@ -28,43 +28,43 @@ const courses = [
       },
       {
         id: 2,
-        img: "/images/fashion.png",
+        img: "/images/coding.png",
         title: "Coding & Web Design",
         description: "Learn the art of tailoring and create custom garments.",
       },
       {
         id: 3,
-        img: "/img/Full Stack Development.png",
+        img: "/images/fish-farming.png",
         title: "Fish Farming",
         description: "Learn the art of tailoring and create custom garments.",
       },
       {
         id: 4,
-        img: "/img/Full Stack Development.png",
+        img: "/images/gele.png",
         title: "Makeup & Gele Tying",
         description: "Learn the art of tailoring and create custom garments.",
       },
       {
         id: 5,
-        img: "/img/Full Stack Development.png",
+        img: "/images/graphics.png",
         title: "Graphics Design",
         description: "Learn the art of tailoring and create custom garments.",
       },
       {
         id: 6,
-        img: "/img/Full Stack Development.png",
+        img: "/images/catering.png",
         title: "Catering",
         description: "Learn the art of tailoring and create custom garments.",
       },
       {
         id: 7,
-        img: "/img/Full Stack Development.png",
+        img: "/images/decoration.png",
         title: "Outdoor Decoration",
         description: "Learn the art of tailoring and create custom garments.",
       },
       {
         id: 8,
-        img: "/img/Full Stack Development.png",
+        img: "/images/ux:ui.png",
         title: "UX/UI Design",
         description: "Learn the art of tailoring and create custom garments.",
       },
@@ -72,29 +72,32 @@ const courses = [
 const container = document.getElementById("course-container");
 
 function displayCourses(courseArray) {
-    container.innerHTML = ""; 
+  container.innerHTML = "";
 
-    courseArray.forEach((course) => {
-        const card = document.createElement("div");
-        card.className = "bg-white rounded-lg shadow-md overflow-hidden";
+  courseArray.forEach((course) => {
+    const card = document.createElement("div");
+    card.className = "bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 flex flex-col";
 
-        card.innerHTML = ` 
-            <img src="${course.img}"
-                alt="${course.title}"
-                class="w-full h-48 object-cover">
-            
-            <div class="p-6 space-y-4">
-                <h2 class="text-2xl font-bold text-gray-800">${course.title}</h2>
-                <p class="text-gray-400 text-lg">${course.description}</p>
+    card.innerHTML = `
+      <div class="relative w-full aspect-video overflow-hidden">
+        <img 
+          src="${course.img}" 
+          alt="${course.title}"
+          class="w-full h-full object-cover hover:scale-105 transition duration-500"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+      </div>
 
-                <button class="enroll-btn w-full bg-[#078928] text-white py-2 rounded-lg transition cursor-pointer"
-                    data-id="${course.id}">
-                    Enroll Now
-                </button>
-            </div>
-        `;
-        container.appendChild(card);
-    });
+      <div class="p-5 flex flex-col gap-3 flex-1">
+        <h2 class="text-lg md:text-xl font-bold text-gray-800">${course.title}</h2>
+        <p class="text-gray-500 text-sm md:text-base leading-relaxed flex-1">${course.description}</p>
+        <a href="contact.html" class="enroll-btn block text-center w-full bg-[#078928] text-white py-2.5 rounded-lg text-sm md:text-base font-medium hover:bg-green-700 transition cursor-pointer mt-auto" data-id="${course.id}">
+          Enroll Now →
+        </a>
+      </div>
+    `;
+    container.appendChild(card);
+  });
 }
 displayCourses(courses);
 
